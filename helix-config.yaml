@@ -1,0 +1,8 @@
+owner: jmanuelbr
+repo: vodafone-modernization-agent
+ref: main
+
+# Optional: set a default index
+index:
+  path: /index
+
