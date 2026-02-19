@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Outer gear shape -->
+  <path d="M12 1l1.5 2.6a8 8 0 0 1 2.2.9L18.5 3l1.5 2.6-2 2a8 8 0 0 1 .5 2.4H21.5v3h-3a8 8 0 0 1-.5 2.4l2 2L18.5 21l-2.8-1.5a8 8 0 0 1-2.2.9L12 23l-1.5-2.6a8 8 0 0 1-2.2-.9L5.5 21 4 18.4l2-2a8 8 0 0 1-.5-2.4H2.5v-3h3A8 8 0 0 1 6 8.6l-2-2L5.5 3l2.8 1.5a8 8 0 0 1 2.2-.9L12 1z" />
+  <!-- Center circle -->
+  <circle cx="12" cy="12" r="3.5" />
+</svg>

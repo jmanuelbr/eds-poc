@@ -1,0 +1,109 @@
+/* Promo Card - Image left, collapsible text right */
+.promo-card-item {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  padding: 24px;
+  border: 1px solid var(--color-grey-2);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  align-items: flex-start;
+}
+
+.promo-card-image {
+  flex: 0 0 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.promo-card-image img {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
+.promo-card-text {
+  flex: 1;
+}
+
+.promo-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  color: var(--color-black);
+  margin: 0 0 8px;
+}
+
+.promo-card-preview {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--color-black);
+  margin: 0 0 4px;
+}
+
+.promo-card-collapsible {
+  display: none;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--color-black);
+}
+
+.promo-card-collapsible.open {
+  display: block;
+}
+
+.promo-card-collapsible p {
+  margin: 0 0 8px;
+}
+
+.promo-card-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: var(--color-red);
+  font-size: 16px;
+  font-weight: 400;
+  font-family: var(--body-font-family);
+  cursor: pointer;
+  padding: 8px 0 0;
+  margin: 0;
+}
+
+.promo-card-toggle:hover {
+  text-decoration: underline;
+}
+
+.promo-card-chevron {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--color-red);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  transition: transform 0.3s;
+  margin-left: 4px;
+}
+
+.promo-card-chevron.open {
+  transform: rotate(-135deg);
+}
+
+@media (width < 900px) {
+  .promo-card-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .promo-card-image {
+    flex: none;
+  }
+
+  .promo-card-toggle {
+    justify-content: center;
+    width: 100%;
+  }
+}

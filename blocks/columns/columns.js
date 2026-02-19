@@ -15,4 +15,15 @@ export default function decorate(block) {
       }
     });
   });
+
+  // Steps variant: add timeline dots
+  if (block.classList.contains('steps')) {
+    [...block.children].forEach((row) => {
+      [...row.children].forEach((col) => {
+        const dot = document.createElement('div');
+        dot.className = 'steps-dot';
+        col.append(dot);
+      });
+    });
+  }
 }

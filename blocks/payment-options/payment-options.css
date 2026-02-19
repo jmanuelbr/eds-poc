@@ -44,6 +44,40 @@ main > .section > .payment-options-wrapper {
   display: block;
 }
 
+/* Term toggle buttons (En 24 meses / En 36 meses) */
+.payment-options .payment-options-terms {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.payment-options .payment-options-term {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: var(--body-font-family);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  margin: 0;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-grey-2);
+  color: var(--color-black);
+}
+
+.payment-options .payment-options-term:hover {
+  border-color: var(--color-grey-3);
+}
+
+.payment-options .payment-options-term.active {
+  background-color: var(--color-teal);
+  border-color: var(--color-teal);
+  color: var(--color-white);
+}
+
 /* Payment option cards */
 .payment-options .payment-options-cards {
   display: flex;
@@ -56,6 +90,11 @@ main > .section > .payment-options-wrapper {
   border: 2px solid var(--color-grey-2, #e0e0e0);
   border-radius: 8px;
   text-align: center;
+  display: none;
+}
+
+.payment-options .payment-options-card.active {
+  display: block;
 }
 
 .payment-options .payment-options-card p {

@@ -122,3 +122,116 @@
     line-height: 20px;
   }
 }
+
+/* ========================================
+   Steps variant - timeline with icons
+   ======================================== */
+.columns.steps > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+  padding-top: 16px;
+}
+
+.columns.steps > div > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 0 8px;
+}
+
+/* Icon area */
+.columns.steps > div > div .icon {
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 40px;
+}
+
+.columns.steps > div > div .icon img {
+  width: 48px;
+  height: 48px;
+  filter: none;
+}
+
+/* Timeline connector line (::before on each item except the first) */
+.columns.steps > div > div::before {
+  content: "";
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 50%;
+  height: 2px;
+  background-color: var(--color-grey-5);
+}
+
+.columns.steps > div > div::after {
+  content: "";
+  position: absolute;
+  top: 80px;
+  right: 0;
+  width: 50%;
+  height: 2px;
+  background-color: var(--color-grey-5);
+}
+
+/* Remove left line on first item */
+.columns.steps > div > div:first-child::before {
+  display: none;
+}
+
+/* Remove right line on last item */
+.columns.steps > div > div:last-child::after {
+  display: none;
+}
+
+/* Circle dot on each step */
+.columns.steps > div > div .steps-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  border: 2px solid var(--color-grey-5);
+  background-color: var(--color-white);
+  box-sizing: border-box;
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+/* Step title text */
+/* stylelint-disable-next-line no-descending-specificity */
+.columns.steps > div > div p {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--color-black);
+  margin: 24px 0 0;
+  text-align: center;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.columns.steps > div > div p strong {
+  display: block;
+  font-weight: 700;
+}
+
+@media (width < 900px) {
+  .columns.steps > div {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .columns.steps > div > div::before,
+  .columns.steps > div > div::after,
+  .columns.steps > div > div .steps-dot {
+    display: none;
+  }
+}
