@@ -16,8 +16,16 @@ export default async function decorate(block) {
   const footer = document.createElement('div');
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
-  // Group h3 + ul pairs into columns for grid layout
-  const linkSection = footer.querySelectorAll('.section')[1];
+  // Remove button classes from all links in footer
+  footer.querySelectorAll('.button').forEach((button) => {
+    button.className = '';
+    const buttonContainer = button.closest('.button-container');
+    if (buttonContainer) buttonContainer.className = '';
+  });
+
+  // Group h3 + ul pairs into columns for grid layout (second section)
+  const sections = footer.querySelectorAll('.section');
+  const linkSection = sections[1];
   if (linkSection) {
     const wrapper = linkSection.querySelector('.default-content-wrapper');
     if (wrapper) {
@@ -38,7 +46,7 @@ export default async function decorate(block) {
   }
 
   // Add accordion behavior for h3 + ul pairs on mobile
-  footer.querySelectorAll('h3').forEach((heading) => {
+  footer.querySelectorAll('.footer-column h3').forEach((heading) => {
     heading.addEventListener('click', () => {
       if (window.innerWidth >= 900) return;
       heading.classList.toggle('open');
