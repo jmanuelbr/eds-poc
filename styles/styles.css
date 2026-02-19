@@ -216,7 +216,7 @@ button {
   max-width: 100%;
   margin: 12px 0;
   border: 2px solid var(--color-red);
-  border-radius: var(--button-border-radius);
+  /*border-radius: var(--button-border-radius);*/
   padding: var(--button-padding);
   font-family: var(--body-font-family);
   font-style: normal;
