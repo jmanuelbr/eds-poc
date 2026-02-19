@@ -23,7 +23,7 @@
   --color-purple: #5e2750;
 
   /* semantic colors */
-  --background-color: var(--color-white);
+  --background-color: rgb(240 240 240);
   --light-color: var(--color-grey-1);
   --dark-color: var(--color-black);
   --text-color: var(--color-black);

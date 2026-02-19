@@ -9,9 +9,8 @@
   margin: 0;
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
   scrollbar-width: none;
   padding-bottom: 8px;
 }
@@ -21,8 +20,8 @@
 }
 
 .cards-pricing > ul > li {
-  flex: 0 0 280px;
-  scroll-snap-align: start;
+  flex: 0 0 calc(50% - 8px);
+  box-sizing: border-box;
   background-color: var(--color-white);
   border-radius: 24px;
   overflow: hidden;
@@ -36,17 +35,25 @@
   box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
 }
 
+/* Recommended card ("Tarifa recomendada") - light green border */
+.cards-pricing > ul > li.recommended {
+  border: 2px solid #00b0a0;
+}
+
 /* Highlighted card ("La más vendida") - border moves to card-body */
 .cards-pricing > ul > li.highlighted {
   border: none;
   overflow: visible;
   background-color: transparent;
+  min-width: 0;
 }
 
 .cards-pricing > ul > li.highlighted .cards-pricing-card-body {
   border: 2px solid var(--color-red);
   border-radius: 24px;
   background-color: var(--color-white);
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 /* Highlight tab label */
@@ -105,7 +112,7 @@
   margin-bottom: 4px;
 }
 
-/* Badge text - red */
+/* Badge text - red, 14px/700 */
 /* stylelint-disable-next-line no-descending-specificity */
 .cards-pricing .cards-pricing-price-box > p.cards-pricing-badge strong:first-child {
   color: var(--color-red);
@@ -134,27 +141,37 @@
   font-weight: 700;
 }
 
-/* Price amount (e.g., "17,36 €/mes") */
-/* stylelint-disable-next-line no-descending-specificity */
-.cards-pricing .cards-pricing-price-box > p.cards-pricing-amount {
+/* Price layout - side-by-side: [number] [info column] */
+.cards-pricing .cards-pricing-price-layout {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cards-pricing .cards-pricing-price-num {
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-black);
+}
+
+.cards-pricing .cards-pricing-price-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.cards-pricing .cards-pricing-price-unit {
   font-size: 18px;
   font-weight: 700;
+  line-height: 1.2;
   color: var(--color-black);
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
-.cards-pricing .cards-pricing-price-box > p.cards-pricing-amount strong {
-  font-size: 64px;
-  font-weight: 800;
-  line-height: 48px;
-  color: var(--color-black);
-  margin-right: 4px;
-}
-
-/* Price subtext (e.g., "Precio final", "Precio final. Antes 31€ (IVA incl.)") */
-/* stylelint-disable-next-line no-descending-specificity */
-.cards-pricing .cards-pricing-price-box > p:not([class]) {
+.cards-pricing .cards-pricing-price-subtext {
   font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
   color: var(--color-black);
 }
 
@@ -244,6 +261,6 @@
 
 @media (width >= 900px) {
   .cards-pricing > ul > li {
-    flex: 0 0 220px;
+    flex: 0 0 calc(50% - 8px);
   }
 }

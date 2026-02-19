@@ -50,6 +50,62 @@ function splitBrParagraph(body) {
   });
 }
 
+/**
+ * Restructure the price amount paragraph into a side-by-side layout:
+ * [price number] [€/mes + Precio final stacked]
+ */
+function buildPriceLayout(priceBox) {
+  const amountP = priceBox.querySelector('.cards-pricing-amount');
+  if (!amountP) return;
+
+  const strong = amountP.querySelector('strong');
+  if (!strong) return;
+
+  const priceNum = strong.textContent.trim();
+
+  // Collect text after the strong (e.g., " €/mes")
+  let unitText = '';
+  let node = strong.nextSibling;
+  while (node) {
+    unitText += node.textContent;
+    node = node.nextSibling;
+  }
+  unitText = unitText.trim();
+
+  // Find subtext paragraph (next sibling that's not features/badge)
+  const nextP = amountP.nextElementSibling;
+  const hasSubtext = nextP
+    && !nextP.classList.contains('cards-pricing-features')
+    && !nextP.classList.contains('cards-pricing-badge');
+
+  // Build layout container
+  const layout = document.createElement('div');
+  layout.className = 'cards-pricing-price-layout';
+
+  const numEl = document.createElement('span');
+  numEl.className = 'cards-pricing-price-num';
+  numEl.textContent = priceNum;
+
+  const infoCol = document.createElement('div');
+  infoCol.className = 'cards-pricing-price-info';
+
+  const unitEl = document.createElement('span');
+  unitEl.className = 'cards-pricing-price-unit';
+  unitEl.textContent = unitText;
+  infoCol.append(unitEl);
+
+  if (hasSubtext) {
+    const subEl = document.createElement('span');
+    subEl.className = 'cards-pricing-price-subtext';
+    subEl.textContent = nextP.textContent.trim();
+    infoCol.append(subEl);
+    nextP.remove();
+  }
+
+  layout.append(numEl, infoCol);
+  amountP.replaceWith(layout);
+}
+
 export default function decorate(block) {
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => {
@@ -116,6 +172,18 @@ export default function decorate(block) {
             p.classList.add('cards-pricing-badge');
           }
         });
+
+        // Detect "Tarifa recomendada" badge and mark card
+        const badgeP = priceBox.querySelector('.cards-pricing-badge');
+        if (badgeP) {
+          const badgeStrong = badgeP.querySelector('strong:first-child');
+          if (badgeStrong && /recomendada/i.test(badgeStrong.textContent)) {
+            li.classList.add('recommended');
+          }
+        }
+
+        // Restructure price into side-by-side layout
+        buildPriceLayout(priceBox);
 
         if (priceBox.children.length > 0) {
           body.prepend(priceBox);
