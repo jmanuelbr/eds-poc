@@ -17,6 +17,8 @@
 
 .carousel-promo .carousel-promo-slides-container {
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .carousel-promo .carousel-promo-slides,
@@ -32,13 +34,14 @@
   scroll-snap-type: x mandatory;
   overflow: scroll clip;
   scrollbar-width: none;
+  order: 1;
 }
 
 .carousel-promo .carousel-promo-slides::-webkit-scrollbar {
   display: none;
 }
 
-/* Slide: side-by-side layout — default is red gradient */
+/* Slide — default is red gradient */
 .carousel-promo .carousel-promo-slide {
   flex: 0 0 100%;
   scroll-snap-align: start;
@@ -46,9 +49,10 @@
   flex-direction: column;
   position: relative;
   width: 100%;
-  min-height: 300px;
+  min-height: 248px;
   background: linear-gradient(45deg, #820000 0%, #e60000 100%);
   overflow: hidden;
+  border-radius: 24px;
 }
 
 /* Image column */
@@ -74,55 +78,52 @@
   display: block;
 }
 
-/* Content column — default red gradient theme */
+/* Content column */
 .carousel-promo .carousel-promo-slide-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 24px;
+  padding: 20px;
+  gap: 8px;
   color: var(--color-white);
-  background: linear-gradient(45deg, #820000 0%, #e60000 100%);
 }
 
 .carousel-promo .carousel-promo-slide-content p {
-  margin: 2px 0;
+  margin: 0;
   color: var(--color-white);
 }
 
 /* Badge (first paragraph - discount label) */
 .carousel-promo .carousel-promo-slide-content p:first-child {
   display: inline-block;
-  background-color: var(--color-white);
-  color: var(--color-red);
-  font-size: 13px;
-  font-weight: 700;
-  padding: 4px 14px;
-  border-radius: 20px;
-  margin-bottom: 8px;
+  background-color: #00697c;
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: 400;
+  padding: 4px 16px;
+  border-radius: 13px;
   width: fit-content;
 }
 
 /* Title (second paragraph with strong) */
 .carousel-promo .carousel-promo-slide-content p:nth-child(2) {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: 700;
-  line-height: 1.3;
-  margin-bottom: 8px;
+  line-height: 1.26;
   color: var(--color-white);
 }
 
 /* Description */
 .carousel-promo .carousel-promo-slide-content p:nth-child(3) {
-  font-size: 14px;
-  line-height: 1.4;
-  margin-bottom: 8px;
-  color: rgb(255 255 255 / 85%);
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--color-white);
 }
 
 /* Price */
 .carousel-promo .carousel-promo-slide-content p:nth-child(4) {
-  font-size: 16px;
-  margin-bottom: 4px;
+  font-size: 18px;
+  font-weight: 700;
   display: flex;
   align-items: baseline;
   gap: 4px;
@@ -131,23 +132,24 @@
 
 .carousel-promo .carousel-promo-slide-content p:nth-child(4) strong {
   font-size: 56px;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1;
 }
 
 /* Price subtitle */
 .carousel-promo .carousel-promo-slide-content p:nth-child(5) {
-  font-size: 14px;
+  font-size: 18px;
   color: var(--color-white);
-  font-weight: 700;
-  margin-bottom: 16px;
+  font-weight: 400;
 }
 
-/* CTA buttons (last paragraph) */
+/* CTA buttons (last paragraph) - stacked on mobile, side-by-side on desktop */
 .carousel-promo .carousel-promo-slide-content p:last-child {
   display: flex;
-  gap: 16px;
-  margin-top: 12px;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 0 20px 20px;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
@@ -156,14 +158,16 @@
   align-items: center;
   justify-content: center;
   padding: 8px 32px;
-  border-radius: 25px;
-  font-size: 16px;
-  font-weight: 500;
+  border-radius: 100px;
+  font-size: 18px;
+  font-weight: 400;
   text-decoration: none;
   text-align: center;
   transition: background-color 0.2s ease, border-color 0.2s ease;
   white-space: nowrap;
-  min-width: 140px;
+  min-width: 152px;
+  height: 46px;
+  box-sizing: border-box;
 }
 
 /* Primary CTA - outline white on gradient */
@@ -178,7 +182,7 @@
 .carousel-promo .carousel-promo-slide-content p:last-child a:last-child {
   background-color: var(--color-white);
   border: 2px solid var(--color-white);
-  color: var(--color-black);
+  color: var(--color-grey-5, #262626);
 }
 
 .carousel-promo .carousel-promo-slide-content p:last-child a:first-child:hover {
@@ -198,7 +202,6 @@
 }
 
 .carousel-promo .carousel-promo-slide-light .carousel-promo-slide-content {
-  background: var(--color-white);
   color: var(--color-black);
 }
 
@@ -207,9 +210,9 @@
   color: var(--color-black);
 }
 
-/* Light badge - red pill */
+/* Light badge - teal pill (same as dark variant) */
 .carousel-promo .carousel-promo-slide-light .carousel-promo-slide-content p:first-child {
-  background-color: var(--color-red);
+  background-color: #00697c;
   color: var(--color-white);
 }
 
@@ -230,7 +233,7 @@
 
 /* Light price subtitle - teal accent */
 .carousel-promo .carousel-promo-slide-light .carousel-promo-slide-content p:nth-child(5) {
-  color: #00697c;
+  color: #008080;
 }
 
 /* Light CTA - primary: dark outline */
@@ -260,14 +263,15 @@
   color: var(--color-white);
 }
 
-/* Navigation arrows */
+/* Navigation arrows - circular, positioned at carousel edges */
+/* Hidden on mobile, shown on desktop */
 .carousel-promo .carousel-promo-navigation-buttons {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   left: 0;
   right: 0;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: space-between;
   z-index: 2;
@@ -280,7 +284,7 @@
   width: 32px;
   height: 32px;
   margin: 0;
-  border-radius: 6px;
+  border-radius: 50%;
   padding: 0;
   background-color: var(--color-white);
   border: 2px solid var(--color-black);
@@ -316,17 +320,19 @@
 }
 
 /* ===== Animation menu (indicators + play/pause) ===== */
+/* Relative on mobile (below the card via order), absolute on desktop */
 .carousel-promo .carousel-promo-animation-menu {
-  position: absolute;
-  bottom: 16px;
+  position: relative;
+  bottom: auto;
   left: 0;
   right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding-bottom: 24px;
+  padding: 12px 0;
   z-index: 3;
+  order: 3;
 }
 
 .carousel-promo .carousel-promo-animated {
@@ -407,42 +413,52 @@
   background-color: rgb(13 13 13 / 90%);
 }
 
-/* Desktop: side-by-side layout */
+/* Desktop: CSS Grid side-by-side layout */
 @media (width >= 900px) {
   .carousel-promo .carousel-promo-slide {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto;
     min-height: 400px;
-    border-radius: 10px;
   }
 
   .carousel-promo .carousel-promo-slide-image {
-    width: 50%;
-    flex: 0 0 50%;
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    width: 100%;
+    min-height: unset;
   }
 
   .carousel-promo .carousel-promo-slide-content {
-    width: 50%;
-    flex: 0 0 50%;
-    padding: 32px 24px 24px;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    width: 100%;
+    padding: 20px 0 0 20px;
   }
 
   .carousel-promo .carousel-promo-slide-content p:nth-child(2) {
-    font-size: 22px;
+    font-size: 38px;
   }
 
   .carousel-promo .carousel-promo-slide-content p:nth-child(4) strong {
     font-size: 64px;
   }
 
-  /* stylelint-disable-next-line no-descending-specificity */
-  .carousel-promo .carousel-promo-slide-content p:last-child a {
-    min-width: 160px;
-    font-size: 18px;
-  }
-
+  /* Desktop: show navigation arrows */
   .carousel-promo .carousel-promo-navigation-buttons {
-    left: 0;
-    right: 0;
+    display: flex;
   }
 
+  /* Desktop: CTAs side by side, no extra padding */
+  .carousel-promo .carousel-promo-slide-content p:last-child {
+    flex-direction: row;
+    padding: 0;
+  }
+
+  /* Desktop: animation menu absolute inside card */
+  .carousel-promo .carousel-promo-animation-menu {
+    position: absolute;
+    bottom: 16px;
+    padding: 0 0 24px;
+  }
 }
