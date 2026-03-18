@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carousel Promo Test</title>
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/blocks/carousel-promo/carousel-promo.css">
+  <style>
+    body { display: block; margin: 0; background: #f0f0f0; font-family: vodafone, helvetica, arial, sans-serif; }
+    header, footer { display: none; }
+    main > .section { margin: 24px 0; }
+    main > .section > div { max-width: 1440px; margin: auto; padding: 0 32px; }
+  </style>
+</head>
+<body class="appear">
+  <header></header>
+  <main>
+    <div class="section" data-section-status="loaded">
+      <div>
+        <div class="carousel-promo-wrapper">
+          <div class="carousel-promo-container">
+            <div>
+              <div class="carousel-promo block" data-block-name="carousel-promo" data-block-status="loaded">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer></footer>
+  <script type="module">
+    import decorate from '/blocks/carousel-promo/carousel-promo.js';
+
+    const block = document.querySelector('.carousel-promo');
+
+    block.innerHTML = `
+      <div>
+        <div>
+          <picture>
+            <source type="image/webp" srcset="https://main--eds-poc--jmanuelbr.aem.page/c/particulares/es/media_19b820eb282000ffedd44d18cb04d35007c8506ca.jpg?width=2000&format=webply&optimize=medium" media="(min-width: 600px)">
+            <img loading="eager" alt="Fibra 600Mb, 2 lineas ilimitadas y TV" src="https://main--eds-poc--jmanuelbr.aem.page/c/particulares/es/media_19b820eb282000ffedd44d18cb04d35007c8506ca.jpg?width=750&format=jpg&optimize=medium" width="750" height="432">
+          </picture>
+        </div>
+        <div>
+          <p>-30% Oferta especial</p>
+          <p><strong>Fibra 600Mb, 2 lineas ilimitadas y TV</strong></p>
+          <p><strong>Con Netflix o elige HBO Max, Disney+ o Prime.</strong> Primeros 60GB a velocidad 5G</p>
+          <p><strong>39</strong>\u20AC/mes</p>
+          <p><strong>Precio especial 3 meses, luego 56\u20AC</strong></p>
+          <p><a href="#">Mas info</a> <a href="#">Lo quiero</a></p>
+        </div>
+      </div>
+      <div>
+        <div>
+          <picture>
+            <source type="image/webp" srcset="https://main--eds-poc--jmanuelbr.aem.page/c/particulares/es/media_1ff8ccef65cfdd8dd2caaafbbf22b322998298d8e.jpg?width=2000&format=webply&optimize=medium" media="(min-width: 600px)">
+            <img loading="lazy" alt="Fibra 600Mb, 2 lineas ilimitadas y TV" src="https://main--eds-poc--jmanuelbr.aem.page/c/particulares/es/media_1ff8ccef65cfdd8dd2caaafbbf22b322998298d8e.jpg?width=750&format=jpg&optimize=medium" width="750" height="419">
+          </picture>
+        </div>
+        <div>
+          <p>light</p>
+          <p>-29% Oferta especial</p>
+          <p><strong>Fibra 600Mb, 2 lineas ilimitadas y TV</strong></p>
+          <p><strong>Con Disney+, Prime y Netflix.</strong> Primeros 160GB a velocidad 5G</p>
+          <p><strong>49</strong>\u20AC/mes</p>
+          <p><strong>Precio especial 3 meses, luego 69\u20AC</strong></p>
+          <p><a href="#">Mas info</a> <a href="#">Lo quiero</a></p>
+        </div>
+      </div>
+      <div>
+        <div>
+          <picture>
+            <source type="image/webp" srcset="https://main--eds-poc--jmanuelbr.aem.page/c/particulares/es/media_152581953d8992f4eb4a6d04c3f5cf34c80248c5a.jpg?width=2000&format=webply&optimize=medium" media="(min-width: 600px)">
+            <img loading="lazy" alt="Internet portatil 5G y linea ilimitada" src="https://main--eds-poc--jmanuelbr.aem.page/c/particulares/es/media_152581953d8992f4eb4a6d04c3f5cf34c80248c5a.jpg?width=750&format=jpg&optimize=medium" width="750" height="432">
+          </picture>
+        </div>
+        <div>
+          <p><strong>Internet portatil 5G y linea ilimitada</strong></p>
+          <p><strong>Conectate donde quieras.</strong> Primeros 60GB de movil a velocidad 5G</p>
+          <p><strong>34</strong>\u20AC/mes</p>
+          <p><a href="#">Mas info</a> <a href="#">Lo quiero</a></p>
+        </div>
+      </div>
+    `;
+
+    await decorate(block);
+  </script>
+</body>
+</html>

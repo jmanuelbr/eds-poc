@@ -1,0 +1,118 @@
+/* Cards Addon - Vodafone Quick Link Pill Cards */
+
+.cards-addon-wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+.cards-addon-container {
+  margin: 0;
+  padding: 0;
+}
+
+.cards-addon-container > div {
+  max-width: 100%;
+  padding: 0;
+}
+
+.cards-addon > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cards-addon > ul > li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Card link */
+.cards-addon .cards-addon-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background-color: var(--color-white);
+  border-radius: 32px;
+  border: none;
+  text-decoration: none;
+  color: var(--color-black);
+  height: 66px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+
+.cards-addon .cards-addon-card:hover {
+  box-shadow: 0 2px 12px rgb(0 0 0 / 12%);
+}
+
+/* Icon */
+.cards-addon .cards-addon-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin-right: 12px;
+}
+
+.cards-addon .cards-addon-icon picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.cards-addon .cards-addon-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.cards-addon .cards-addon-icon svg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Text */
+.cards-addon .cards-addon-text {
+  flex: 1;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgb(13 13 13);
+  line-height: 26px;
+}
+
+/* Chevron arrow */
+.cards-addon .cards-addon-arrow {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12px;
+}
+
+.cards-addon .cards-addon-arrow svg {
+  width: 10px;
+  height: 24px;
+}
+
+/* Desktop: horizontal row with 18px gap */
+@media (width >= 900px) {
+  .cards-addon > ul {
+    flex-direction: row;
+    gap: 18px;
+  }
+
+  .cards-addon > ul > li {
+    flex: 1;
+  }
+}

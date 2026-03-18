@@ -263,19 +263,11 @@
   color: var(--color-white);
 }
 
-/* Navigation arrows - circular, positioned at carousel edges */
-/* Hidden on mobile, shown on desktop */
+/* Navigation arrows - circular, positioned outside the slides area */
+/* Hidden on mobile, shown on desktop via grid layout */
 .carousel-promo .carousel-promo-navigation-buttons {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 0;
-  right: 0;
   display: none;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 2;
-  pointer-events: none;
+  order: 2;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
@@ -444,9 +436,38 @@
     font-size: 64px;
   }
 
-  /* Desktop: show navigation arrows */
+  /* Desktop: slides container becomes grid with arrow columns */
+  .carousel-promo .carousel-promo-slides-container {
+    display: grid;
+    grid-template-columns: 32px 1fr 32px;
+    grid-template-rows: auto auto;
+    align-items: center;
+  }
+
+  /* Desktop: slides in center column */
+  .carousel-promo .carousel-promo-slides {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    order: unset;
+  }
+
+  /* Desktop: show navigation arrows, use display:contents so buttons become grid children */
   .carousel-promo .carousel-promo-navigation-buttons {
-    display: flex;
+    display: contents;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
+  .carousel-promo .carousel-promo-navigation-buttons button {
+    grid-row: 1 / 2;
+    align-self: center;
+  }
+
+  .carousel-promo .carousel-promo-navigation-buttons .slide-prev {
+    grid-column: 1 / 2;
+  }
+
+  .carousel-promo .carousel-promo-navigation-buttons .slide-next {
+    grid-column: 3 / 4;
   }
 
   /* Desktop: CTAs side by side, no extra padding */
@@ -455,10 +476,15 @@
     padding: 0;
   }
 
-  /* Desktop: animation menu absolute inside card */
+  /* Desktop: animation menu absolute inside the slides area */
   .carousel-promo .carousel-promo-animation-menu {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
     position: absolute;
     bottom: 16px;
-    padding: 0 0 24px;
+    left: 0;
+    right: 0;
+    padding: 0;
+    align-self: end;
   }
 }
