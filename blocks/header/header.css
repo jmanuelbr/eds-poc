@@ -559,3 +559,7 @@ header .nav-segment-label {
     box-shadow: 0 2px 8px -2px rgb(0 0 0 / 16%);
   }
 }
+
+.header-wrapper {
+      margin-bottom: 53px;
+}
